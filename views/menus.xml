@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_oca_admin_root"
+              name="OCA Admin"
+              sequence="99"
+              groups="base.group_system"
+              web_icon="oca_admin,static/description/icon.png"/>
+
+    <menuitem id="menu_oca_repositories"
+              name="Repositories"
+              parent="menu_oca_admin_root"
+              action="oca_admin.action_oca_repository"
+              sequence="10"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_oca_modules"
+              name="Modules"
+              parent="menu_oca_admin_root"
+              action="oca_admin.action_oca_module"
+              sequence="20"
+              groups="base.group_system"/>
+
+</odoo>

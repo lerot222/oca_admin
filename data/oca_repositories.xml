@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- TOP 1 — 1201 stars -->
+    <record id="repo_web" model="oca.admin.repository">
+        <field name="name">Web</field>
+        <field name="organization">OCA</field>
+        <field name="repo_name">web</field>
+        <field name="branch">18.0</field>
+        <field name="notes">★ 1201 — Web client UI enhancements: improved widgets, QR codes, list views improvements, accessibility and many UX additions.</field>
+    </record>
+
+    <!-- TOP 2 — 912 stars -->
+    <record id="repo_server_tools" model="oca.admin.repository">
+        <field name="name">Server Tools</field>
+        <field name="organization">OCA</field>
+        <field name="repo_name">server-tools</field>
+        <field name="branch">18.0</field>
+        <field name="notes">★ 912 — Tools for Odoo Administrators: auto-backup, scheduled actions, configuration management, database tools, SFTP, logging improvements.</field>
+    </record>
+
+    <!-- TOP 3 — 413 stars -->
+    <record id="repo_account_financial_tools" model="oca.admin.repository">
+        <field name="name">Account Financial Tools</field>
+        <field name="organization">OCA</field>
+        <field name="repo_name">account-financial-tools</field>
+        <field name="branch">18.0</field>
+        <field name="notes">★ 413 — Accounting extensions: lock dates, account types, journal improvements, financial reports, tax tools.</field>
+    </record>
+
+    <!-- TOP 4 — 423 stars -->
+    <record id="repo_reporting_engine" model="oca.admin.repository">
+        <field name="name">Reporting Engine</field>
+        <field name="organization">OCA</field>
+        <field name="repo_name">reporting-engine</field>
+        <field name="branch">18.0</field>
+        <field name="notes">★ 423 — Alternative reporting engine: PDF reports with custom templates, XLSX export, report configurator.</field>
+    </record>
+
+    <!-- TOP 5 — 401 stars -->
+    <record id="repo_stock_logistics" model="oca.admin.repository">
+        <field name="name">Stock &amp; Logistics</field>
+        <field name="organization">OCA</field>
+        <field name="repo_name">stock-logistics-warehouse</field>
+        <field name="branch">18.0</field>
+        <field name="notes">★ 401 — Warehouse management: inventory improvements, lot/serial traceability, putaway rules, stock valuation tools.</field>
+    </record>
+
+    <!-- TOP 6 — 399 stars -->
+    <record id="repo_sale_workflow" model="oca.admin.repository">
+        <field name="name">Sale Workflow</field>
+        <field name="organization">OCA</field>
+        <field name="repo_name">sale-workflow</field>
+        <field name="branch">18.0</field>
+        <field name="notes">★ 399 — Sales workflow improvements: sale order revision, double validation, margins, delivery dates management.</field>
+    </record>
+
+    <!-- TOP 7 — 397 stars -->
+    <record id="repo_project" model="oca.admin.repository">
+        <field name="name">Project</field>
+        <field name="organization">OCA</field>
+        <field name="repo_name">project</field>
+        <field name="branch">18.0</field>
+        <field name="notes">★ 397 — Project management extensions: task dependencies, burndown charts, timesheet improvements, project templates.</field>
+    </record>
+
+</odoo>

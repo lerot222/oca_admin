@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oca_repository_admin,oca.admin.repository admin,model_oca_admin_repository,base.group_system,1,1,1,1
+access_oca_module_admin,oca.admin.module admin,model_oca_admin_module,base.group_system,1,1,1,1

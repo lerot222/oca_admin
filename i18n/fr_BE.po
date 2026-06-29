@@ -1,0 +1,208 @@
+# Translation of OCA Admin for Odoo 18.0
+# Copyright (C) 2026 math
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Module OCA Admin 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-29 00:00+0000\n"
+"PO-Revision-Date: 2026-06-29 00:00+0000\n"
+"Last-Translator: math\n"
+"Language-Team: French <fr@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "OCA Admin"
+msgstr "OCA Admin"
+
+msgid "Install and manage OCA modules from the web interface"
+msgstr "Installer et gérer des modules OCA depuis l'interface web"
+
+msgid "OCA GitHub Repository"
+msgstr "Dépôt GitHub OCA"
+
+msgid "OCA Module"
+msgstr "Module OCA"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Organization"
+msgstr "Organisation"
+
+msgid "Repository"
+msgstr "Dépôt"
+
+msgid "Branch"
+msgstr "Branche"
+
+msgid "GitHub URL"
+msgstr "URL GitHub"
+
+msgid "Last Fetch"
+msgstr "Dernier fetch"
+
+msgid "Module Count"
+msgstr "Nombre de modules"
+
+msgid "Installed"
+msgstr "Installé"
+
+msgid "Installed / Total"
+msgstr "Installé / Total"
+
+msgid "Notes"
+msgstr "Notes"
+
+msgid "Technical Name"
+msgstr "Nom technique"
+
+msgid "Module Name"
+msgstr "Nom du module"
+
+msgid "Summary"
+msgstr "Résumé"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Author"
+msgstr "Auteur"
+
+msgid "Category"
+msgstr "Catégorie"
+
+msgid "Has WUI"
+msgstr "Interface WUI"
+
+msgid "Interface"
+msgstr "Interface"
+
+msgid "Dependencies"
+msgstr "Dépendances"
+
+msgid "Required Dependencies"
+msgstr "Dépendances requises"
+
+msgid "Required Odoo Dependencies"
+msgstr "Dépendances Odoo requises"
+
+msgid "Missing Dependencies"
+msgstr "Dépendances manquantes"
+
+msgid "Missing"
+msgstr "Manquantes"
+
+msgid "Dependencies OK"
+msgstr "Dépendances OK"
+
+msgid "Odoo Dependencies"
+msgstr "Dépendances Odoo"
+
+msgid "Python Dependencies"
+msgstr "Dépendances Python"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "Installing..."
+msgstr "Installation..."
+
+msgid "Error"
+msgstr "Erreur"
+
+msgid "Installation Log"
+msgstr "Journal d'installation"
+
+msgid "Local Path"
+msgstr "Chemin local"
+
+msgid "Downloaded"
+msgstr "Téléchargé"
+
+msgid "Odoo Module"
+msgstr "Module Odoo"
+
+msgid "With Interface"
+msgstr "Avec interface"
+
+msgid "Without Interface"
+msgstr "Sans interface"
+
+msgid "Install"
+msgstr "Installer"
+
+msgid "Open"
+msgstr "Ouvrir"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Re-fetch modules from GitHub"
+msgstr "Re-fetcher les modules depuis GitHub"
+
+msgid "Re-fetch complete"
+msgstr "Re-fetch terminé"
+
+msgid "Re-fetch complete for %d repository(ies)."
+msgstr "Re-fetch terminé pour %d dépôt(s)."
+
+msgid "Module %s is not installed."
+msgstr "Le module %s n'est pas installé."
+
+msgid "Module %s not found after copy."
+msgstr "Module %s introuvable après copie."
+
+msgid "No menu found for module %s. Try navigating manually."
+msgstr "Aucun menu trouvé pour le module %s. Naviguez manuellement."
+
+msgid "Git clone failed:\n%s"
+msgstr "Échec du clone Git :\n%s"
+
+msgid "Copy failed:\n%s"
+msgstr "Échec de la copie :\n%s"
+
+msgid "Module folder not found: %s"
+msgstr "Dossier du module introuvable : %s"
+
+msgid "Module installed"
+msgstr "Module installé"
+
+msgid "%s has been installed."
+msgstr "%s a été installé."
+
+msgid "No external dependencies."
+msgstr "Aucune dépendance externe."
+
+msgid "Not installed"
+msgstr "Non installé"
+
+msgid "OCA Repositories"
+msgstr "Dépôts OCA"
+
+msgid "OCA Modules"
+msgstr "Modules OCA"
+
+msgid "Add your first OCA repository"
+msgstr "Ajoutez votre premier dépôt OCA"
+
+msgid "Group By"
+msgstr "Regrouper par"
+
+msgid "Repository"
+msgstr "Dépôt"
+
+msgid "Search Modules"
+msgstr "Rechercher des modules"
+
+msgid "Display Name"
+msgstr "Nom affiché"
+
+msgid "Permissions restored on {ADDONS_PATH}"
+msgstr "Permissions restaurées sur {ADDONS_PATH}"

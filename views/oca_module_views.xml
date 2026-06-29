@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_oca_module_form" model="ir.ui.view">
+        <field name="name">oca.admin.module.form</field>
+        <field name="model">oca.admin.module</field>
+        <field name="arch" type="xml">
+            <form string="OCA Module">
+                <header>
+                    <button name="action_install"
+                            string="Install"
+                            type="object"
+                            class="btn-primary"
+                            invisible="install_state in ('installed', 'installing')"/>
+                    <button name="action_open_installed_module"
+                            string="Open Module"
+                            type="object"
+                            class="btn-success"
+                            invisible="install_state != 'installed'"/>
+                    <button name="action_open_github"
+                            string="View on GitHub"
+                            type="object"/>
+                    <field name="install_state" widget="statusbar"
+                           statusbar_visible="available,installed"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Module">
+                            <field name="technical_name"/>
+                            <field name="name"/>
+                            <field name="repository_id"/>
+                            <field name="version"/>
+                            <field name="author"/>
+                            <field name="category"/>
+                            <field name="is_application" string="Has Web Interface (WUI)"/>
+                        </group>
+                        <group string="Status">
+                            <field name="is_local" string="Downloaded"/>
+                            <field name="local_path"/>
+                            <field name="python_deps" invisible="not python_deps"/>
+                        </group>
+                    </group>
+                    <group string="Summary" invisible="not summary">
+                        <field name="summary" nolabel="1"/>
+                    </group>
+                    <group string="Required Odoo Dependencies" invisible="not odoo_deps">
+                        <field name="deps_form_html" nolabel="1" widget="html"/>
+                    </group>
+                    <group string="Installation Log" invisible="not install_log">
+                        <field name="install_log" nolabel="1" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_oca_module_list" model="ir.ui.view">
+        <field name="name">oca.admin.module.list</field>
+        <field name="model">oca.admin.module</field>
+        <field name="arch" type="xml">
+            <list string="OCA Modules"
+                  decoration-success="install_state == 'installed'"
+                  decoration-danger="install_state == 'error'"
+                  decoration-muted="install_state == 'installing'">
+                <field name="technical_name"/>
+                <field name="name" string="Display Name"/>
+                <field name="summary"/>
+                <field name="version" optional="hide"/>
+                <field name="wui_icon" string="Interface" widget="html"/>
+                <field name="deps_html" string="Dependencies" widget="html" optional="show"/>
+                <field name="install_state" widget="badge"
+                    decoration-success="install_state == 'installed'"
+                    decoration-warning="install_state == 'installing'"
+                    decoration-danger="install_state == 'error'"/>
+                <button name="action_install" type="object" string="Installer" icon="fa-download"
+                    invisible="install_state in ('installed','installing') or not deps_ok"
+                    class="btn-secondary"/>
+                <button name="action_open_installed_module" type="object" string="Ouvrir" icon="fa-external-link"
+                    invisible="install_state != 'installed'"
+                    class="btn-secondary"/>
+                <button name="action_open_github" type="object" string="GitHub" icon="fa-github"
+                    class="btn-secondary"/>
+                <field name="is_application" column_invisible="1"/>
+                <field name="deps_ok" column_invisible="1"/>
+                <field name="deps_missing" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_oca_module_search" model="ir.ui.view">
+        <field name="name">oca.admin.module.search</field>
+        <field name="model">oca.admin.module</field>
+        <field name="arch" type="xml">
+            <search string="Search Modules">
+                <field name="technical_name" string="Name"/>
+                <field name="name" string="Display Name"/>
+                <field name="summary"/>
+                <field name="repository_id"/>
+                <separator/>
+                <filter string="With Interface" name="with_wui"
+                        domain="[('is_application','=',True)]"/>
+                <filter string="Without Interface" name="without_wui"
+                        domain="[('is_application','=',False)]"/>
+                <separator/>
+                <filter string="Installed" name="installed"
+                        domain="[('install_state','=','installed')]"/>
+                <filter string="Available" name="available"
+                        domain="[('install_state','=','available')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Repository" name="group_repo"
+                            context="{'group_by': 'repository_id'}"/>
+                    <filter string="Status" name="group_state"
+                            context="{'group_by': 'install_state'}"/>
+                    <filter string="Interface" name="group_wui"
+                            context="{'group_by': 'is_application'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_oca_module" model="ir.actions.act_window">
+        <field name="name">OCA Modules</field>
+        <field name="res_model">oca.admin.module</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_oca_module_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No modules yet</p>
+            <p>First fetch modules from an OCA repository.</p>
+        </field>
+    </record>
+
+</odoo>

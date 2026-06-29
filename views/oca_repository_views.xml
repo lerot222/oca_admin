@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_oca_repository_form" model="ir.ui.view">
+        <field name="name">oca.admin.repository.form</field>
+        <field name="model">oca.admin.repository</field>
+        <field name="arch" type="xml">
+            <form string="OCA Repository">
+                <header>
+                    <button name="action_fetch_modules"
+                            string="Fetch modules from GitHub"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state == 'fetched'"/>
+                    <button name="action_fetch_modules"
+                            string="Refresh modules"
+                            type="object"
+                            invisible="state != 'fetched'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="not_fetched,fetched"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_modules"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-cubes"
+                                invisible="module_count == 0">
+                            <field name="module_count"
+                                   string="Modules"
+                                   widget="statinfo"/>
+                        </button>
+                        <button name="action_view_modules"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-check-circle"
+                                invisible="installed_count == 0">
+                            <field name="installed_count"
+                                   string="Installed"
+                                   widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group string="Repository">
+                            <field name="name"/>
+                            <field name="organization"/>
+                            <field name="repo_name"/>
+                            <field name="branch"/>
+                            <field name="github_url" widget="url"/>
+                        </group>
+                        <group string="Status">
+                            <field name="last_fetch_date"/>
+                        </group>
+                    </group>
+                    <group string="Notes">
+                        <field name="notes" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_oca_repository_list" model="ir.ui.view">
+        <field name="name">oca.admin.repository.list</field>
+        <field name="model">oca.admin.repository</field>
+        <field name="arch" type="xml">
+            <list string="OCA Repositories"
+                  decoration-success="state == 'fetched'"
+                  decoration-danger="state == 'error'">
+                <field name="name"/>
+                <field name="organization"/>
+                <field name="repo_name"/>
+                <field name="branch"/>
+                <field name="module_count" string="Total" optional="hide"/>
+                <field name="module_ratio" string="Installed / Total"/>
+                <field name="last_fetch_date"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'fetched'"
+                       decoration-danger="state == 'error'"
+                       decoration-info="state == 'not_fetched'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_oca_repository_search" model="ir.ui.view">
+        <field name="name">oca.admin.repository.search</field>
+        <field name="model">oca.admin.repository</field>
+        <field name="arch" type="xml">
+            <search string="Search Repositories">
+                <field name="name"/>
+                <field name="repo_name"/>
+                <filter string="Fetched" name="fetched"
+                        domain="[('state','=','fetched')]"/>
+                <filter string="Not Fetched" name="not_fetched"
+                        domain="[('state','=','not_fetched')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_state"
+                            context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_oca_repository" model="ir.actions.act_window">
+        <field name="name">OCA Repositories</field>
+        <field name="res_model">oca.admin.repository</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_oca_repository_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first OCA repository
+            </p>
+            <p>
+                Browse OCA repositories on
+                <a href="https://github.com/OCA" target="_blank">github.com/OCA</a>
+                and add them here to discover and install their modules.
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Re-fetch All — disponible dans le menu Action de la liste et du form -->
+    <record id="action_refetch_all_repos" model="ir.actions.server">
+        <field name="name">Re-fetch modules from GitHub</field>
+        <field name="model_id" ref="model_oca_admin_repository"/>
+        <field name="binding_model_id" ref="model_oca_admin_repository"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_refetch_all()</field>
+    </record>
+
+</odoo>
