@@ -58,8 +58,7 @@
         <field name="name">oca.admin.module.list</field>
         <field name="model">oca.admin.module</field>
         <field name="arch" type="xml">
-            <list string="OCA Modules"
-                  decoration-success="install_state == 'installed'"
+            <list decoration-success="install_state == 'installed'"
                   decoration-danger="install_state == 'error'"
                   decoration-muted="install_state == 'installing'">
                 <field name="technical_name"/>
@@ -72,10 +71,10 @@
                     decoration-success="install_state == 'installed'"
                     decoration-warning="install_state == 'installing'"
                     decoration-danger="install_state == 'error'"/>
-                <button name="action_install" type="object" string="Installer" icon="fa-download"
+                <button name="action_install" type="object" string="Install" icon="fa-download"
                     invisible="install_state in ('installed','installing') or not deps_ok"
                     class="btn-secondary"/>
-                <button name="action_open_installed_module" type="object" string="Ouvrir" icon="fa-external-link"
+                <button name="action_open_installed_module" type="object" string="Open" icon="fa-external-link"
                     invisible="install_state != 'installed'"
                     class="btn-secondary"/>
                 <button name="action_open_github" type="object" string="GitHub" icon="fa-github"

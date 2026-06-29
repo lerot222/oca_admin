@@ -4,205 +4,531 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Module OCA Admin 18.0\n"
+"Project-Id-Version: Odoo Server 18.0-20250612\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-29 00:00+0000\n"
-"PO-Revision-Date: 2026-06-29 00:00+0000\n"
+"POT-Creation-Date: 2026-06-29 16:02+0000\n"
+"PO-Revision-Date: 2026-06-29 16:02+0000\n"
 "Last-Translator: math\n"
-"Language-Team: French <fr@li.org>\n"
 "Language: fr\n"
+"Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-msgid "OCA Admin"
-msgstr "OCA Admin"
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_module.py:0
+msgid "%(name)s has been installed."
+msgstr "%(name)s a été installé."
 
-msgid "Install and manage OCA modules from the web interface"
-msgstr "Installer et gérer des modules OCA depuis l'interface web"
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_repository.py:0
+msgid "%(new)d new modules, %(updated)d updated in %(repo)s."
+msgstr "%(new)d nouveaux modules, %(updated)d mis à jour dans %(repo)s."
 
-msgid "OCA GitHub Repository"
-msgstr "Dépôt GitHub OCA"
-
-msgid "OCA Module"
-msgstr "Module OCA"
-
-msgid "Name"
-msgstr "Nom"
-
-msgid "Organization"
-msgstr "Organisation"
-
-msgid "Repository"
-msgstr "Dépôt"
-
-msgid "Branch"
-msgstr "Branche"
-
-msgid "GitHub URL"
-msgstr "URL GitHub"
-
-msgid "Last Fetch"
-msgstr "Dernier fetch"
-
-msgid "Module Count"
-msgstr "Nombre de modules"
-
-msgid "Installed"
-msgstr "Installé"
-
-msgid "Installed / Total"
-msgstr "Installé / Total"
-
-msgid "Notes"
-msgstr "Notes"
-
-msgid "Technical Name"
-msgstr "Nom technique"
-
-msgid "Module Name"
-msgstr "Nom du module"
-
-msgid "Summary"
-msgstr "Résumé"
-
-msgid "Version"
-msgstr "Version"
-
-msgid "Author"
-msgstr "Auteur"
-
-msgid "Category"
-msgstr "Catégorie"
-
-msgid "Has WUI"
-msgstr "Interface WUI"
-
-msgid "Interface"
-msgstr "Interface"
-
-msgid "Dependencies"
-msgstr "Dépendances"
-
-msgid "Required Dependencies"
-msgstr "Dépendances requises"
-
-msgid "Required Odoo Dependencies"
-msgstr "Dépendances Odoo requises"
-
-msgid "Missing Dependencies"
-msgstr "Dépendances manquantes"
-
-msgid "Missing"
-msgstr "Manquantes"
-
-msgid "Dependencies OK"
-msgstr "Dépendances OK"
-
-msgid "Odoo Dependencies"
-msgstr "Dépendances Odoo"
-
-msgid "Python Dependencies"
-msgstr "Dépendances Python"
-
-msgid "Status"
-msgstr "Statut"
-
-msgid "Available"
-msgstr "Disponible"
-
-msgid "Installing..."
-msgstr "Installation..."
-
-msgid "Error"
-msgstr "Erreur"
-
-msgid "Installation Log"
-msgstr "Journal d'installation"
-
-msgid "Local Path"
-msgstr "Chemin local"
-
-msgid "Downloaded"
-msgstr "Téléchargé"
-
-msgid "Odoo Module"
-msgstr "Module Odoo"
-
-msgid "With Interface"
-msgstr "Avec interface"
-
-msgid "Without Interface"
-msgstr "Sans interface"
-
-msgid "Install"
-msgstr "Installer"
-
-msgid "Open"
-msgstr "Ouvrir"
-
-msgid "GitHub"
-msgstr "GitHub"
-
-msgid "Re-fetch modules from GitHub"
-msgstr "Re-fetcher les modules depuis GitHub"
-
-msgid "Re-fetch complete"
-msgstr "Re-fetch terminé"
-
-msgid "Re-fetch complete for %d repository(ies)."
-msgstr "Re-fetch terminé pour %d dépôt(s)."
-
-msgid "Module %s is not installed."
-msgstr "Le module %s n'est pas installé."
-
-msgid "Module %s not found after copy."
-msgstr "Module %s introuvable après copie."
-
-msgid "No menu found for module %s. Try navigating manually."
-msgstr "Aucun menu trouvé pour le module %s. Naviguez manuellement."
-
-msgid "Git clone failed:\n%s"
-msgstr "Échec du clone Git :\n%s"
-
-msgid "Copy failed:\n%s"
-msgstr "Échec de la copie :\n%s"
-
-msgid "Module folder not found: %s"
-msgstr "Dossier du module introuvable : %s"
-
-msgid "Module installed"
-msgstr "Module installé"
-
-msgid "%s has been installed."
-msgstr "%s a été installé."
-
-msgid "No external dependencies."
-msgstr "Aucune dépendance externe."
-
-msgid "Not installed"
-msgstr "Non installé"
-
-msgid "OCA Repositories"
-msgstr "Dépôts OCA"
-
-msgid "OCA Modules"
-msgstr "Modules OCA"
-
+#. module: oca_admin
+#: model_terms:ir.actions.act_window,help:oca_admin.action_oca_repository
 msgid "Add your first OCA repository"
 msgstr "Ajoutez votre premier dépôt OCA"
 
-msgid "Group By"
-msgstr "Regrouper par"
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__author
+msgid "Author"
+msgstr "Auteur"
 
-msgid "Repository"
-msgstr "Dépôt"
+#. module: oca_admin
+#: model:ir.model.fields.selection,name:oca_admin.selection__oca_admin_module__install_state__available
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+msgid "Available"
+msgstr "Disponible"
 
-msgid "Search Modules"
-msgstr "Rechercher des modules"
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__branch
+msgid "Branch"
+msgstr "Branche"
 
+#. module: oca_admin
+#: model_terms:ir.actions.act_window,help:oca_admin.action_oca_repository
+msgid "Browse OCA repositories on"
+msgstr "Parcourez les dépôts OCA sur"
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_repository.py:0
+msgid "Cannot reach GitHub API: %(error)s"
+msgstr "Impossible d'atteindre l'API GitHub : %(error)s"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__category
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: oca_admin
+#: model:ir.model.fields,help:oca_admin.field_oca_admin_module__odoo_deps
+msgid "Comma-separated list of required Odoo modules (from manifest depends)"
+msgstr "Liste des modules Odoo requis séparés par des virgules (depuis manifest depends)"
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_module.py:0
+msgid ""
+"Copy failed:\n"
+"%(error)s"
+msgstr ""
+"Échec de la copie :\n"
+"%(error)s"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__create_uid
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__create_date
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__deps_ok
+msgid "Dependencies OK"
+msgstr "Dépendances OK"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__display_name
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__name
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__display_name
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_list
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
 msgid "Display Name"
 msgstr "Nom affiché"
 
-msgid "Permissions restored on {ADDONS_PATH}"
-msgstr "Permissions restaurées sur {ADDONS_PATH}"
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__is_local
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "Downloaded"
+msgstr "Téléchargé"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__deps_html
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_list
+msgid "Dépendances"
+msgstr "Dépendances"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "Dépendances Odoo requises"
+msgstr "Dépendances Odoo requises"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__deps_form_html
+msgid "Dépendances requises"
+msgstr "Dépendances requises"
+
+#. module: oca_admin
+#: model:ir.model.fields.selection,name:oca_admin.selection__oca_admin_module__install_state__error
+#: model:ir.model.fields.selection,name:oca_admin.selection__oca_admin_repository__state__error
+msgid "Error"
+msgstr "Erreur"
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_repository.py:0
+msgid "Fetch complete"
+msgstr "Récupération terminée"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_form
+msgid "Fetch modules from GitHub"
+msgstr "Récupérer les modules depuis GitHub"
+
+#. module: oca_admin
+#: model:ir.model.fields.selection,name:oca_admin.selection__oca_admin_repository__state__fetched
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_search
+msgid "Fetched"
+msgstr "Récupéré"
+
+#. module: oca_admin
+#: model_terms:ir.actions.act_window,help:oca_admin.action_oca_module
+msgid "First fetch modules from an OCA repository."
+msgstr "Commencez par récupérer les modules d'un dépôt OCA."
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_module.py:0
+msgid ""
+"Git clone failed:\n"
+"%(error)s"
+msgstr ""
+"Échec du clone Git :\n"
+"%(error)s"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_list
+msgid "GitHub"
+msgstr "GitHub"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__github_url
+msgid "GitHub URL"
+msgstr "URL GitHub"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_search
+msgid "Group By"
+msgstr "Regrouper par"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__is_application
+msgid "Has WUI"
+msgstr "Interface WUI"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "Has Web Interface (WUI)"
+msgstr "Possède une interface web (WUI)"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__id
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__id
+msgid "ID"
+msgstr "ID"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "Install"
+msgstr "Installer"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__install_log
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "Installation Log"
+msgstr "Journal d'installation"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__installed_count
+#: model:ir.model.fields.selection,name:oca_admin.selection__oca_admin_module__install_state__installed
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_form
+msgid "Installed"
+msgstr "Installé"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__module_ratio
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_list
+msgid "Installed / Total"
+msgstr "Installé / Total"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_list
+msgid "Installer"
+msgstr "Installer"
+
+#. module: oca_admin
+#: model:ir.model.fields.selection,name:oca_admin.selection__oca_admin_module__install_state__installing
+msgid "Installing..."
+msgstr "Installation..."
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_list
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+msgid "Interface"
+msgstr "Interface"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__last_fetch_date
+msgid "Last Fetch"
+msgstr "Dernier fetch"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__write_uid
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__write_uid
+msgid "Last Updated by"
+msgstr "Dernière modification par"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__write_date
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__write_date
+msgid "Last Updated on"
+msgstr "Dernière modification le"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__local_path
+msgid "Local Path"
+msgstr "Chemin local"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__main_menu_action_id
+msgid "Main Menu Action"
+msgstr "Action menu principal"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__deps_missing
+msgid "Missing Dependencies"
+msgstr "Dépendances manquantes"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "Module"
+msgstr "Module"
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_module.py:0
+msgid "Module %(name)s is not installed."
+msgstr "Le module %(name)s n'est pas installé."
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_module.py:0
+msgid "Module %(name)s not found after copy."
+msgstr "Module %(name)s introuvable après copie."
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_module.py:0
+msgid "Module folder not found: %(path)s"
+msgstr "Dossier du module introuvable : %(path)s"
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_module.py:0
+msgid "Module installed"
+msgstr "Module installé"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__module_count
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__module_ids
+#: model:ir.ui.menu,name:oca_admin.menu_oca_modules
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_form
+msgid "Modules"
+msgstr "Modules"
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_repository.py:0
+msgid "Modules — %(name)s"
+msgstr "Modules — %(name)s"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__name
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+msgid "Name"
+msgstr "Nom"
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_module.py:0
+msgid "No menu found for module %(name)s. Try navigating manually."
+msgstr "Aucun menu trouvé pour le module %(name)s. Naviguez manuellement."
+
+#. module: oca_admin
+#: model_terms:ir.actions.act_window,help:oca_admin.action_oca_module
+msgid "No modules yet"
+msgstr "Aucun module pour l'instant"
+
+#. module: oca_admin
+#: model:ir.model.fields.selection,name:oca_admin.selection__oca_admin_repository__state__not_fetched
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_search
+msgid "Not Fetched"
+msgstr "Non récupéré"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__notes
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_form
+msgid "Notes"
+msgstr "Notes"
+
+#. module: oca_admin
+#: model:ir.ui.menu,name:oca_admin.menu_oca_admin_root
+msgid "OCA Admin"
+msgstr "OCA Admin"
+
+#. module: oca_admin
+#: model:res.groups,name:oca_admin.group_oca_admin_manager
+msgid "OCA Admin Manager"
+msgstr "Gestionnaire OCA Admin"
+
+#. module: oca_admin
+#: model:res.groups,name:oca_admin.group_oca_admin_user
+msgid "OCA Admin User"
+msgstr "Utilisateur OCA Admin"
+
+#. module: oca_admin
+#: model:ir.model,name:oca_admin.model_oca_admin_repository
+msgid "OCA GitHub Repository"
+msgstr "Dépôt GitHub OCA"
+
+#. module: oca_admin
+#: model:ir.model,name:oca_admin.model_oca_admin_module
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "OCA Module"
+msgstr "Module OCA"
+
+#. module: oca_admin
+#: model:ir.actions.act_window,name:oca_admin.action_oca_module
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_list
+msgid "OCA Modules"
+msgstr "Modules OCA"
+
+#. module: oca_admin
+#: model:ir.actions.act_window,name:oca_admin.action_oca_repository
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_list
+msgid "OCA Repositories"
+msgstr "Dépôts OCA"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_form
+msgid "OCA Repository"
+msgstr "Dépôt OCA"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__odoo_deps
+msgid "Odoo Dependencies"
+msgstr "Dépendances Odoo"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__odoo_module_id
+msgid "Odoo Module"
+msgstr "Module Odoo"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "Open Module"
+msgstr "Ouvrir le module"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__organization
+msgid "Organization"
+msgstr "Organisation"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_list
+msgid "Ouvrir"
+msgstr "Ouvrir"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__python_deps
+msgid "Python Dependencies"
+msgstr "Dépendances Python"
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_repository.py:0
+msgid "Re-fetch complete for %(count)d repositories."
+msgstr "Re-fetch terminé pour %(count)d dépôt(s)."
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_repository.py:0
+msgid "Re-fetch done"
+msgstr "Re-fetch terminé"
+
+#. module: oca_admin
+#: model:ir.actions.server,name:oca_admin.action_refetch_all_repos
+msgid "Re-fetch modules from GitHub"
+msgstr "Re-fetcher les modules depuis GitHub"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_form
+msgid "Refresh modules"
+msgstr "Actualiser les modules"
+
+#. module: oca_admin
+#: model:ir.ui.menu,name:oca_admin.menu_oca_repositories
+msgid "Repositories"
+msgstr "Dépôts"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__repository_id
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__repo_name
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_form
+msgid "Repository"
+msgstr "Dépôt"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+msgid "Search Modules"
+msgstr "Rechercher des modules"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_search
+msgid "Search Repositories"
+msgstr "Rechercher des dépôts"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__install_state
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_repository__state
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_form
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_search
+msgid "Status"
+msgstr "Statut"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__summary
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "Summary"
+msgstr "Résumé"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__technical_name
+msgid "Technical Name"
+msgstr "Nom technique"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_repository_list
+msgid "Total"
+msgstr "Total"
+
+#. module: oca_admin
+#: model:ir.model.fields,help:oca_admin.field_oca_admin_module__is_application
+msgid "True if the module has its own menu and web interface."
+msgstr "Vrai si le module possède son propre menu et interface web."
+
+#. module: oca_admin
+#. odoo-python
+#: code:addons/oca_admin/models/oca_repository.py:0
+msgid "Unexpected response from GitHub API."
+msgstr "Réponse inattendue de l'API GitHub."
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__version
+msgid "Version"
+msgstr "Version"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_form
+msgid "View on GitHub"
+msgstr "Voir sur GitHub"
+
+#. module: oca_admin
+#: model:ir.model.fields,field_description:oca_admin.field_oca_admin_module__wui_icon
+msgid "WUI"
+msgstr "WUI"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+msgid "With Interface"
+msgstr "Avec interface"
+
+#. module: oca_admin
+#: model_terms:ir.ui.view,arch_db:oca_admin.view_oca_module_search
+msgid "Without Interface"
+msgstr "Sans interface"
+
+#. module: oca_admin
+#: model_terms:ir.actions.act_window,help:oca_admin.action_oca_repository
+msgid "and add them here to discover and install their modules."
+msgstr "et ajoutez-les ici pour découvrir et installer leurs modules."
+
+#. module: oca_admin
+#: model_terms:ir.actions.act_window,help:oca_admin.action_oca_repository
+msgid "github.com/OCA"
+msgstr "github.com/OCA"

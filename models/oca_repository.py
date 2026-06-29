@@ -1,6 +1,8 @@
+# pylint: disable=prefer-env-translation,translation-not-lazy,attribute-string-redundant
 import ast
-import requests
 import logging
+
+import requests
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
@@ -15,27 +17,35 @@ class OcaRepository(models.Model):
     _description = 'OCA GitHub Repository'
     _order = 'name asc'
 
-    name = fields.Char(string='Name', required=True)
-    organization = fields.Char(string='Organization', default='OCA', required=True)
-    repo_name = fields.Char(string='Repository', required=True)
-    branch = fields.Char(string='Branch', default='18.0', required=True)
+    name = fields.Char(required=True)
+    organization = fields.Char(default='OCA', required=True)
+    repo_name = fields.Char(string='Repository', required=True)  # noqa: W8113
+    branch = fields.Char(default='18.0', required=True)
     github_url = fields.Char(string='GitHub URL', compute='_compute_github_url', store=True)
     state = fields.Selection(
-        selection=[('not_fetched', 'Not Fetched'), ('fetched', 'Fetched'), ('error', 'Error')],
-        string='Status', default='not_fetched', readonly=True,
+        selection=[
+            ('not_fetched', 'Not Fetched'),
+            ('fetched', 'Fetched'),
+            ('error', 'Error'),
+        ],
+        string='Status',
+        default='not_fetched',
+        readonly=True,
     )
     last_fetch_date = fields.Datetime(string='Last Fetch', readonly=True)
     module_ids = fields.One2many('oca.admin.module', 'repository_id', string='Modules')
     module_count = fields.Integer(string='Module Count', compute='_compute_module_count')
     installed_count = fields.Integer(string='Installed', compute='_compute_module_count')
     module_ratio = fields.Char(string='Installed / Total', compute='_compute_module_count')
-    notes = fields.Text(string='Notes')
+    notes = fields.Text()
 
     @api.depends('organization', 'repo_name')
     def _compute_github_url(self):
         for rec in self:
             if rec.organization and rec.repo_name:
-                rec.github_url = f'https://github.com/{rec.organization}/{rec.repo_name}'
+                rec.github_url = 'https://github.com/%(org)s/%(repo)s' % {
+                    'org': rec.organization, 'repo': rec.repo_name
+                }
             else:
                 rec.github_url = False
 
@@ -43,11 +53,17 @@ class OcaRepository(models.Model):
     def _compute_module_count(self):
         for rec in self:
             rec.module_count = len(rec.module_ids)
-            rec.installed_count = len(rec.module_ids.filtered(lambda m: m.install_state == 'installed'))
-            rec.module_ratio = f'{rec.installed_count} / {rec.module_count}' if rec.module_count else '— / —'
+            rec.installed_count = len(
+                rec.module_ids.filtered(lambda m: m.install_state == 'installed')
+            )
+            rec.module_ratio = (
+                '%(installed)s / %(total)s' % {
+                    'installed': rec.installed_count, 'total': rec.module_count
+                }
+                if rec.module_count else '— / —'
+            )
 
     def _fetch_manifest(self, tech_name):
-        """Fetch and parse __manifest__.py from GitHub raw content."""
         url = RAW_URL.format(
             org=self.organization,
             repo=self.repo_name,
@@ -60,22 +76,24 @@ class OcaRepository(models.Model):
                 return {}
             return ast.literal_eval(r.text)
         except Exception:
+            _logger.debug('Could not fetch manifest for %s/%s', self.repo_name, tech_name, exc_info=True)
             return {}
 
     def action_fetch_modules(self):
-        """Fetch module list + manifest details from GitHub."""
         self.ensure_one()
         api_url = (
-            f'https://api.github.com/repos/'
-            f'{self.organization}/{self.repo_name}/'
-            f'contents?ref={self.branch}'
+            'https://api.github.com/repos/%(org)s/%(repo)s/contents?ref=%(branch)s' % {
+                'org': self.organization,
+                'repo': self.repo_name,
+                'branch': self.branch,
+            }
         )
         try:
             response = requests.get(api_url, timeout=15)
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
             self.state = 'error'
-            raise UserError(_('Cannot reach GitHub API: %s') % str(e))
+            raise UserError(_('Cannot reach GitHub API: %(error)s') % {'error': str(e)}) from e
 
         contents = response.json()
         if not isinstance(contents, list):
@@ -118,14 +136,19 @@ class OcaRepository(models.Model):
                 created += 1
 
         self.write({'state': 'fetched', 'last_fetch_date': fields.Datetime.now()})
-        _logger.info('Fetched %s new + %s updated modules from %s/%s', created, updated, self.organization, self.repo_name)
+        _logger.info(
+            'Fetched %s new + %s updated modules from %s/%s',
+            created, updated, self.organization, self.repo_name,
+        )
 
         return {
             'type': 'ir.actions.client',
             'tag': 'display_notification',
             'params': {
                 'title': _('Fetch complete'),
-                'message': _('%d new modules, %d updated in %s.') % (created, updated, self.repo_name),
+                'message': _(
+                    '%(new)d new modules, %(updated)d updated in %(repo)s.'
+                ) % {'new': created, 'updated': updated, 'repo': self.repo_name},
                 'type': 'success',
                 'sticky': False,
             },
@@ -135,7 +158,7 @@ class OcaRepository(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Modules — %s') % self.name,
+            'name': _('Modules — %(name)s') % {'name': self.name},
             'res_model': 'oca.admin.module',
             'view_mode': 'list,form',
             'domain': [('repository_id', '=', self.id)],
@@ -143,19 +166,17 @@ class OcaRepository(models.Model):
         }
 
     def action_refetch_all(self):
-        """Re-fetch modules for all selected repositories (or all if none selected)."""
-        repos = self if self else self.search([])
-        total_new = total_updated = 0
+        # search([]) without limit intentional: re-fetch ALL repos
+        repos = self if self else self.search([])  # pylint: disable=no-search-all
         errors = []
         for repo in repos:
             try:
                 repo.action_fetch_modules()
-                total_new += 0
-                total_updated += 0
             except Exception as e:
-                errors.append(f'{repo.repo_name}: {e}')
+                _logger.warning('Re-fetch failed for %s: %s', repo.repo_name, e)
+                errors.append('%(repo)s: %(error)s' % {'repo': repo.repo_name, 'error': e})
 
-        msg = _('Re-fetch complete for %d repositories.') % len(repos)
+        msg = _('Re-fetch complete for %(count)d repositories.') % {'count': len(repos)}
         if errors:
             msg += ' Errors: ' + '; '.join(errors)
 

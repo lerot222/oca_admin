@@ -9,8 +9,12 @@
         from the Odoo web interface without using the command line.
     ''',
     'author': 'math',
+    'website': 'https://github.com/math/oca_admin',
     'license': 'LGPL-3',
     'depends': ['base', 'mail', 'web'],
+    'external_dependencies': {
+        'python': ['requests'],
+    },
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',

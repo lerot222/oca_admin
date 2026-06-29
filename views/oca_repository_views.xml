@@ -64,8 +64,7 @@
         <field name="name">oca.admin.repository.list</field>
         <field name="model">oca.admin.repository</field>
         <field name="arch" type="xml">
-            <list string="OCA Repositories"
-                  decoration-success="state == 'fetched'"
+            <list decoration-success="state == 'fetched'"
                   decoration-danger="state == 'error'">
                 <field name="name"/>
                 <field name="organization"/>
@@ -118,8 +117,7 @@
         </field>
     </record>
 
-
-    <!-- Re-fetch All — disponible dans le menu Action de la liste et du form -->
+    <!-- Re-fetch All — available in Action menu on list and form -->
     <record id="action_refetch_all_repos" model="ir.actions.server">
         <field name="name">Re-fetch modules from GitHub</field>
         <field name="model_id" ref="model_oca_admin_repository"/>
