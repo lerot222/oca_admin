@@ -92,7 +92,7 @@
                         domain="[('state','=','fetched')]"/>
                 <filter string="Not Fetched" name="not_fetched"
                         domain="[('state','=','not_fetched')]"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Status" name="group_state"
                             context="{'group_by': 'state'}"/>
                 </group>

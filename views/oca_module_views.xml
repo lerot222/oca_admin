@@ -105,7 +105,7 @@
                         domain="[('install_state','=','installed')]"/>
                 <filter string="Available" name="available"
                         domain="[('install_state','=','available')]"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Repository" name="group_repo"
                             context="{'group_by': 'repository_id'}"/>
                     <filter string="Status" name="group_state"
